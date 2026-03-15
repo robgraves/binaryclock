@@ -59,51 +59,39 @@ while True:
 	m1, m2 = divmod(minutes,10)
 	s1, s2 = divmod(seconds,10)
 
+	#convert each digit into a 4 bit binary string
+	h1 = format(h1, '04b')
+	h2 = format(h2, '04b')
+	m1 = format(m1, '04b')
+	m2 = format(m2, '04b')
+	s1 = format(s1, '04b')
+	s2 = format(s2, '04b')
+
+
 	#Test prints
 	#print(hours,"\n")
 	#print(minutes,"\n")
 	#print(seconds,"\n")
 	#print(ampm,"\n")
 
-	print(h1,"\n")
-	print(h2,"\n")
-	print(m1,"\n")
-	print(m2,"\n")
-	print(s1,"\n")
-	print(s2,"\n")
+	#print(h1,"\n")
+	#print(h2,"\n")
+	#print(m1,"\n")
+	#print(m2,"\n")
+	#print(s1,"\n")
+	#print(s2,"\n")
 
-	#Testing some display setup
-	print("                                                                         ")
-	print("                                                                         ")
-	print("    88888                                                                ")
-	print("    8   8                                                                ")
-	print("    88888                                                                ")
-	print("    8   8                                                                ")
-	print("    88888                                                                ")	
-	print("                                                                         ")
-	print("    4   4                                                                ")
-	print("    4   4                                                                ")
-	print("    44444                                                                ")
-	print("        4                                                                ")
-	print("        4                                                                ")
-	print("                                                                         ")
-	print("    22222                                                                ")
-	print("        2                                                                ")
-	print("    22222                                                                ")
-	print("    2                                                                    ")
-	print("    22222                                                                ")
-	print("                                                                         ")
-	print("     11                                                                  ")
-	print("      1                                                                  ")
-	print("      1                                                                  ")
-	print("      1                                                                  ")
-	print("    11111                                                                ")
-	print("                                                                         ")
-	print("               H   H     H   H     MM   MM    MM   MM     SSSSS     SSSSS")
-	print("               H   H     H   H     M M M M    M M M M     S         S    ")
-	print("               HHHHH     HHHHH     M  M  M    M  M  M     SSSSS     SSSSS")
-	print("               H   H     H   H     M     M    M     M         S         S")
-	print("               H   H     H   H     M     M    M     M     SSSSS     SSSSS")
-
+	#Display rows, top to bottom: 8, 4, 2, 1
+	rows = ["", "", "", ""]
+	for i in range(4):
+		rows[i] += f"{h1[i]} {h2[i]} : {m1[i]} {m2[i]} : {s1[i]} {s2[i]}"
+		# Replace 1's and 0's with other visuals
+		rows[i] = rows[i].replace('1', '[O]').replace('0', '[ ]')
+	
+	# Print the binary clock display         
+	print(" H   H     M   M     S   S ")         
+	print("---------------------------")         
+	for row in rows:
+		print(row)
 
 	time.sleep(1)
